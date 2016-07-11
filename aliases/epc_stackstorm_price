@@ -1,17 +1,22 @@
 ---
-name: "chatops.epc_stackstorm_price"
-action_ref: "ansible.command_local"
+name: epc_stackstorm_price
 description: "Get Stackstorm price in EPC"
-formats:
-  - display: "ansible <command>"
-    representation:
-      - "ansible {{ args }}"
-result:
-  format: |
-    Ansible command `{{ execution.parameters.args }}` result: {~}
-    {% if execution.result.stderr %}*Stdout:* {% endif %}
-    ```{{ execution.result.stdout }}```
-    {% if execution.result.stderr %}*Stderr:* ```{{ execution.result.stderr }}```{% endif %}
-  extra:
-    slack:
-      color: "{% if execution.result.succeeded %}good{% else %}danger{% endif %}"
+runner_type: local-shell-cmd
+entry_point: ""
+enabled: true
+parameters:
+  sudo:
+    description: "Run command with sudo"
+    immutable: true
+    default: true
+  kwarg_op:
+    immutable: true
+  cmd:
+    description: "Command to run"
+    type: string
+    immutable: true
+    default: "/home/kostiantyn_pokotilov@epam.com/epc/maestro-cli/bin/or2report -p Personal -r EPAM-MSQ3 -m `date -d "$D" '+%m'` -y `date -d "$D" '+%Y'` -t quota"
+  hosts:
+    description: "Ansible hosts to ping"
+    type: string
+    required: true
