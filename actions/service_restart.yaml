@@ -1,4 +1,4 @@
-name: notify
+name: restart
 runner_type: "local-shell-cmd"
 description: Restart service.
 enabled: true
