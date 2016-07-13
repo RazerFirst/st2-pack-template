@@ -1,11 +1,6 @@
 ---
-name: view-data
-pack: st2_test_pack
-description: "Alias for the test action"
-action_ref: "st2_test_pack.view-data"
+name: "restart"
+description: "Send a SMS to all registered members of the team."
+action_ref: "st2-pack-template.restart"
 formats:
-    - "view-data"
-ack:
-  enabled: false
-result:
-format: "action completed! {~} {{ execution.result.stdout }}"
+- "notify {{message}}"
