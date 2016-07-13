@@ -16,7 +16,7 @@ parameters:
     description: "Command to run"
     type: string
     immutable: true
-    default: "servoce {{service_name}} restart'"
+    default: "service {{service_name}} restart'"
   hosts:
   service_name:
     description: "Service to restart"
