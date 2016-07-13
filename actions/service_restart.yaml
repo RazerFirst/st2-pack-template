@@ -1,24 +1,10 @@
----
-name: service_restart
-description: Restart service 
-runner_type: local-shell-cmd
-entry_point: ""
+name: notify
+runner_type: "local-shell-cmd"
+description: Restart service.
 enabled: true
+entry_point: bash_scripts/restart_service.sh
 parameters:
-  sudo:
-    description: "Run command with sudo"
-    type: boolean
-    immutable: true
-    default: true
-  kwarg_op:
-    immutable: true
-  cmd:
-    description: "Command to run"
+  message:
     type: string
-    immutable: true
-    default: "service {{service_name}} restart'"
-  hosts:
-  service_name:
-    description: "Service to restart"
-    type: string
-    required: true
+    description: "Message to send"
+required: true
